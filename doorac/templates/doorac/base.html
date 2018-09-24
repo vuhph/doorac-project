@@ -1,0 +1,77 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Vu Pham">
+    <title>Door Access Control</title>
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <link rel="stylesheet" href="{% static 'css/door.css' %}">
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <a class="brand" href="{% url 'doorac:index' %}">Access Control System</a>
+    </div>
+</header>
+
+<div class="main">
+    {% if user.is_authenticated %}
+    <div class="main-left">
+        <ul class="nav">
+            <li class="slide">
+                <p class="menu">User Administration</p>
+                <ul>
+                    <li><a class="slide-menu" href="{% url 'doorac:accesslog'%}">Access Log</a></li>
+                    <li><a class="slide-menu" href="{% url 'doorac:devlog' %}">Device Log</a></li>
+                    <li><a class="slide-menu" href="{% url 'doorac:usrlist' %}">User List</a></li>
+                </ul>
+            </li>
+
+            <li class="slide">
+                <p class="menu">Terminal</p>
+                <ul>
+                    <li><a class="slide-menu" href="">Terminal Status</a></li>
+                    <li><a class="slide-menu" href="">Terminal Setup</a></li>
+                </ul>
+            </li>
+
+            <li class="slide">
+                <p class="menu">Access Control</p>
+                <ul>
+                    <li><a class="slide-menu" href="">Time Set</a></li>
+                    <li><a class="slide-menu" href="">Time Zone Setup</a></li>
+                    <li><a class="slide-menu" href="">Group List</a></li>
+                    <li><a class="slide-menu" href="">Holiday Setup</a></li>
+                    <li><a class="slide-menu" href="">Door Setup</a></li>
+                </ul>
+            </li>
+
+            <li class="slide">
+                <a class="logout-menu" href="{% url 'doorac:logout' %}">Logout</a>
+            </li>
+        </ul>
+    </div>
+    {% endif %}
+
+    <div class="main-right">
+        <div class="msgBox" align="center">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        <div class=content-container>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

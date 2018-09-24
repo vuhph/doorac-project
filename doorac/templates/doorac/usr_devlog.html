@@ -1,0 +1,23 @@
+{% extends "doorac/base.html" %}
+
+{% block content %}
+
+<div>
+{% if devlogs %} 
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Logs</th>
+        </tr>
+        {% for devlog in devlogs %}
+        <tr>
+            <td>{{ devlog.created_date }}</td>
+            <td>{{ devlog.detail }} {{ devlog.log_event }}</td>
+        <tr>
+        {% endfor %}
+    <table>
+{% else %}
+    <p>No device log available.</p>
+{% endif %}
+
+{% endblock %}

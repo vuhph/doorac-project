@@ -1,0 +1,9 @@
+{% extends "doorac/base.html" %}
+
+{% block content %}
+
+<div>
+<input type="button" value="refresh" onClick="window.location.reload()" >
+</div>
+
+{% endblock %}

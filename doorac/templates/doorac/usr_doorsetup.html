@@ -1,0 +1,37 @@
+{% extends "doorac/base.html" %}
+
+{% block content %}
+
+<div>
+{% if rooms %} 
+    <table>
+        <tr>
+            <th>Room</th>
+            <th>Information</th>
+        </tr>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.name }}</td>
+            <td>{{ room.detail }}</td>
+        <tr>
+        {% endfor %}
+    <table>
+{% else %}
+    <p>No room added.</p>
+{% endif %}
+    <form action="{% url 'doorac:roomadd' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="roomname" placeholder="Room Name" required />
+        <input type="text" name="roomdetail" placeholder="Room Detail" />
+        <input type="submit" value="Add" />
+        <input type="hidden" name="next" value="{{ next }}" />
+        <br>
+        <select name="rooms">
+            {% for room in rooms %}
+            <option value="{{ room.name }}">{{ room.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+{% endblock %}

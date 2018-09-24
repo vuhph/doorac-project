@@ -1,0 +1,66 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Door Access Control</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/door.css' %}">
+        <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            {% if user.is_authenticated %}
+                <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'doorac:door_logout' %}">Log out</a>)</small></p>
+            {% else %}
+                <p class="top-menu"><small><a href="{% url 'doorac:door_login' %}">Log in</a></small></p>
+            {% endif %}
+            <h1><a href="{% url 'doorac:door_index' %}">Door Access Control</a></h1>
+        </div>
+
+        <div class='w3-sidebar w3-collapse' id='sidenav'>
+            <div id='leftmenuinner'>
+                <div class='w3-light-grey' id='leftmenuinnerinner'>
+                    <a href='javascript:void(0)' onclick='close_menu()' class='w3-button w3-hide-large w3-large w3-display-topright' style='right:16px;padding:3px 12px;font-weight:bold;'>&times;</a>
+<h2 class="left"><span class="left_h2">User Administration</span></h2>
+<a target="_top" href="">User List</a>
+<a target="_top" href="ref_byfunc.asp">Add User</a>
+<br>
+<h2 class="left"><span class="left_h2">Terminal</span></h2>
+<a target="_top" href="">Terminal Status</a>
+<a target="_top" href="ref_byfunc.asp">Terminal Setup</a>
+<br>
+<h2 class="left"><span class="left_h2">Access Control</span></h2>
+<a target="_top" href="">Time Set</a>
+<a target="_top" href="ref_byfunc.asp">Door Setup</a>
+<br>
+
+<div class='w3-main w3-light-grey' id='belowtopnav' style='margin-left:220px;'>
+  <div class='w3-row w3-white'>
+    <div class='w3-col l10 m12' id='main'>
+      <div id='mainLeaderboard' style='overflow:hidden;'>
+        <!-- MainLeaderboard-->
+        <div id='div-gpt-ad-1422003450156-2'>
+          <script type='text/javascript'>googletag.cmd.push(function() { googletag.display('div-gpt-ad-1422003450156-2'); });</script>
+        </div>
+      </div>
+
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
+                <div class="msg">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

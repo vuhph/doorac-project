@@ -1,0 +1,26 @@
+{% extends "doorac/base.html" %}
+
+{% block content %}
+
+<div class="accesslog">
+{% if logs %}
+    <table class="log">
+        <tr>
+            <th>Time</th>
+            <th>Logs</th>
+            <th>Status</th>
+        </tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.created_date }}</td>
+            <td>{{ log.detail }} {{ log.rfid_uid }}</td>
+            <td>{{ log.log_event }}</td>
+        <tr>
+        {% endfor %}
+    <table>
+{% else %}
+    <p>No log available.</p>
+{% endif %}
+</div>
+
+{% endblock %}

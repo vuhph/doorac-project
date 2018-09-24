@@ -1,0 +1,142 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    font-family: arial;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    margin: 0.5rem;
+    padding: 0 0 0 0.5rem;
+}
+
+.loginBox{
+    width: 300px;
+    height: 200px;
+    border: 3px solid #2d8912;
+    border-radius: 10px;
+    margin: auto;	
+    padding: 20px;
+    text-align: center;
+    background-color: #f2f2f2;
+    position: relative;
+}
+
+.loginBox > form > p > label {
+    float: left;
+    width: 25%;
+    margin: 6px 6px 0px 0px;
+}
+
+.loginBox > form > p > input {
+    float: left;
+    width: 70%;
+    margin: 6px 6px 0px 0px;
+}
+
+.loginBox > form > input[type=submit] {
+    background-color: #37b114;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 30px auto;
+    font-size: 18px;
+}
+
+.loginBox > form > input[type=submit]:hover {
+    background-color: #2d8912;
+}
+
+header {
+    width: 100%;
+    background: #2d8912; 
+    position: fixed;
+}
+
+header > .container {
+    margin-top: 0px;
+    padding: 5px;
+}
+
+header > .container > .brand {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    cursor: default;
+    vertical-align: text-bottom;
+}
+
+.main-left {
+    float: left;
+    width: calc(0% + 17rem);
+    margin-top: 46px;
+    height: 90%;
+    background-color: #b0ff99;
+
+    overflow-x: auto;
+    position: fixed;
+}
+
+.main > .main-left > .nav {
+    margin-top: 0.5rem;
+}
+
+.main > .main-left > .nav > li a {
+    color: #404040; 
+    display: block;
+    text-decoration: none;
+}
+
+.main > .main-left > .nav > li {
+    cursor: pointer;
+}
+
+.main > .main-left > .nav > .slide > .logout-menu,
+.main > .main-left > .nav > .slide > .menu {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    cursor: default;
+}
+
+.main > .main-left > .nav > .slide > .logout-menu {
+    cursor: pointer;
+    color: black;
+}
+
+.main > .main-left > .nav > .slide > ul > li > .slide-menu:hover,
+.main > .main-left > .nav > .slide > .logout-menu:hover {
+    background: #7ce75d;
+}
+
+.main > .main-left > .nav > .slide > ul > li > .slide-menu {
+    padding: 0.3rem;
+}
+
+.main > .main-left > .nav > .slide:hover {
+    background: none;
+}
+
+.main-right {
+    width: 85%;
+    width: calc(100% - 17rem);
+    float: right;
+    height: 85%;
+    margin-top: 50px;
+    background-color: white;
+}
+
+.main-right > .msgBox {
+    color: red !important;
+}
+
+.main-right > .content-container {
+    
+}

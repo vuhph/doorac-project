@@ -1,0 +1,37 @@
+{% extends "doorac/base.html" %}
+
+{% block content %}
+
+<div>
+{% if users %} 
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>E-mail</th>
+            <th>Tag assigned</th>
+            <th>Admin user</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.first_name }} {{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.tag.tag_uid }}</td>
+            <td>{{ user.is_staff }}</td>
+        <tr>
+        {% endfor %}
+    <table>
+{% else %}
+    <p>No user available.</p>
+{% endif %}
+<br><br>
+<form action="{% url 'doorac:webpost' %}" method="post">
+{% csrf_token %}
+    <input type="radio" name="WEB" value="OPEN" checked/>Door Open
+    <input type="submit" value="Request">
+</form>
+
+</div>
+
+{% endblock %}
